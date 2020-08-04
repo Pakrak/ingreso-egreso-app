@@ -5,6 +5,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { environment } from 'src/environments/environment';
 
+//ngrx
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { appReducers } from './app.reducer';
 
 //Angular fire
 import { AngularFireModule } from '@angular/fire';
@@ -48,7 +52,12 @@ import { SidebarComponent } from './share/sidebar/sidebar.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    StoreModule.forRoot(appReducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
