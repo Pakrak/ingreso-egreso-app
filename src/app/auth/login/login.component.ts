@@ -31,10 +31,7 @@ uiSubscription: Subscription;
 
      // tslint:disable-next-line: align
      // tslint:disable-next-line: no-shadowed-variable
-     this.uiSubscription = this.store.select('ui').subscribe( ui => {
-                                this.cargando = ui.isLoading;
-                                console.log('cargando subs');
-                              });
+     this.uiSubscription = this.store.select('ui').subscribe( ui => this.cargando = ui.isLoading);
   }
 
   ngOnDestroy(): void {

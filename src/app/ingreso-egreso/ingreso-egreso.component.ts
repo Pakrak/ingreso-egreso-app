@@ -38,18 +38,18 @@ export class IngresoEgresoComponent implements OnInit, OnDestroy {
   }
 
   guardar(){
-    
+
     console.log('vamos a guardar');
     if ( this.ingresoForm.invalid) {return; }
     this.store.dispatch( ui.isLoading());
-        
+
     const {descripcion, monto} = this.ingresoForm.value;
     console.log('creamos objeto para guardar');
     const ingresoEgreso = new IngresoEgreso(descripcion, monto, this.tipo);
 
     console.log('llamamos a crear IngresoEgreso');
     this.ingresoEgresoService.crearIngresoEgreso(ingresoEgreso)
-    .then(() =>{
+    .then(() => {
       this.store.dispatch( ui.stopLoading());
       Swal.fire('Registro creado', descripcion, 'success');
       this.ingresoForm.reset();

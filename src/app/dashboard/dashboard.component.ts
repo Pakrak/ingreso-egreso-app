@@ -1,12 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '../app.reducer';
-import { auth } from 'firebase';
 import { filter } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
 import * as ingresoEgresoActions from '../ingreso-egreso/ingreso-egreso.actions';
-import { IngresoEgreso } from '../models/ingreso-egreso.model';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -40,8 +39,8 @@ ingresosSubs: Subscription;
   }
 
   ngOnDestroy(): void{
-    this.ingresosSubs.unsubscribe();
-    this.userSubs.unsubscribe();
+    this.ingresosSubs?.unsubscribe();
+    this.userSubs?.unsubscribe();
 
   }
 
